@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Phisherman",
+  "version": "1.0",
+  "description": "A phishing email detector that uses AI to analyze email headers and content for potential threats.",
+
+  "permissions": ["scripting", "activeTab","storage"],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "Phisherman.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+
+  "options_page": "options.html",
+  "host_permissions": ["https://mail.google.com/*"]
+}
