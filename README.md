@@ -68,8 +68,7 @@ Phisherman/
   <h2 style="margin-top:30px;">Contributing</h2>
   <p>Pull requests and issues are welcome! For large changes, open an issue first.</p>
 
-  <h2 style="margin-top:30px;">License</h2>
-  <p>Add the license of your project here (MIT, Unlicense, etc.).</p>
+  
 
   <p style="margin-top:30px;color:#64748b;">Repository: 
     <a href="https://github.com/BHawkins235/Phisherman">https://github.com/BHawkins235/Phisherman</a>
