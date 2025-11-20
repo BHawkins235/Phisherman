@@ -6,15 +6,15 @@
       <h1 style="margin:0;">Phisherman</h1>
       <p style="color:#475569;margin:4px 0 0 0;">A Chrome Extension that scans Gmail emails for phishing threats</p>
 
-      <!-- Modern language badges -->
-      <div style="margin-top:10px;">
+      
+   <div style="margin-top:10px;">
         <img alt="HTML" src="https://img.shields.io/badge/HTML-60%25-E34F26?style=for-the-badge&logo=html5&logoColor=white">
         <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-40%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
         <img alt="Repo Size" src="https://img.shields.io/github/repo-size/BHawkins235/Phisherman?style=for-the-badge">
         <img alt="License" src="https://img.shields.io/badge/License-Unlicense-lightgrey?style=for-the-badge">
       </div>
 
-      <div style="margin-top:12px;">
+  <div style="margin-top:12px;">
         <a href="https://github.com/BHawkins235/Phisherman" style="padding:10px 14px;background:#0ea5a4;color:white;text-decoration:none;border-radius:8px;font-weight:600;">Open on GitHub</a>
       </div>
     </div>
