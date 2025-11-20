@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phisherman Options</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5; /* optional for visual contrast */
+    }
+
+    .centered-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+
+    #apiKey, #saveButton {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      margin: 10px;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      
+    }
+    #saveButton:hover {
+      background-color: #d1e7dd;
+    }
+    #saveButton:active {
+        transform: scale(0.95);
+        background-color: #4CAF50;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.1s ease;
+    }
+    #title {
+      font-family: 'DM Serif Display', serif;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+   
+  <div class="centered-container">
+    <h1 id="title">Phisherman Options</h1>
+    <input id="apiKey" type="text" placeholder="API Key" />
+    <button id="saveButton">Save</button>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
