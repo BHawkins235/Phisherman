@@ -1,6 +1,7 @@
 <div style="max-width:900px;margin:auto;padding:20px;font-family:system-ui,Arial,sans-serif;">
 
   <div style="display:flex;align-items:center;gap:16px;">
+  <h1>The images used in this project are place holders</h1>
    
    <div>
       <h1 style="margin:0;">Phisherman</h1>
