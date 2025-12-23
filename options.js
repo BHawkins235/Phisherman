@@ -26,7 +26,7 @@ saveButton.addEventListener('click', () => {
   chrome.storage.sync.set({ geminiApiKey: apiKey }, () => {
     status.textContent = "API key saved successfully.";
     apiKeyInput.value = '';
-    console.log('API key saved:', apiKey);
+    console.log('API key saved.');
   });
 });
 
