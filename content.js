@@ -1,7 +1,10 @@
 function getCurrentEmail() {
   const subject = document.querySelector("h2[data-thread-id]")?.innerText || "";
   const body = document.querySelector(".a3s")?.innerText || "";
-  return { subject, body };
+  const sender = document.querySelector(".gD")?.getAttribute("email") || "";
+  const header = document.querySelector(".gE")?.innerText || "";
+  const links = Array.from(document.querySelectorAll(".a3s a")).map(a => a.href).join(" ");
+  return { subject, body, sender, header, links };
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
@@ -9,26 +12,10 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     const email = getCurrentEmail();
     const combined = `${email.subject} ${email.body}`;
 
-    // Step 1: Local pattern check
-    const patterns = [
-      /urgent/i,
-      /account\s+locked/i,
-      /verify\s+your\s+account/i,
-      /click\s+here/i,
-      /suspend/i,
-      /security\s+alert/i,
-      /password/i
-    ];
 
-    const localMatch = patterns.some(p => p.test(combined));
+    
 
-    if (localMatch) {
-      console.log("Local pattern matched — phishing likely.");
-      sendResponse({ isPhishing: true, source: "local" });
-      return;
-    }
-
-    // Step 2: Gemini fallback
+    // Step 1: Gemini prompt and API call
     chrome.runtime.sendMessage({ action: "getApiKey" }, async (response) => {
       const apiKey = response?.apiKey || '';
       if (!apiKey) {
@@ -37,16 +24,13 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         return;
       }
 
-      const prompt = `
-You're an AI trained to detect phishing emails. Respond with only "true" or "false" — no explanation.
-Is the following email a phishing attempt?
+      const prompt2 = `You're a expert email security analyst. Determine if the following email is a phishing attempt. Respond with only "true" or "false". 
+        Use your knowledge of common phishing tactics such as urgent language, suspicious links, requests for personal information, and unexpected attachments.
+        Email Subject: ${email.subject} Email Body: ${email.body} Email Sender: ${email.sender} Email Header: ${email.header}. With the links analize the address connected to them; links: ${email.links}. If you are not sure respond with a number 0 to 100 indicating the likelihood of phishing.`;
 
-Subject: ${email.subject}
-Body: ${email.body}
-`;
 
       try {
-        const geminiResponse = await queryGemini(prompt, apiKey);
+        const geminiResponse = await queryGemini(prompt2, apiKey);
         console.log("Gemini raw response:", geminiResponse);
 
         const isPhishing = geminiResponse.trim().toLowerCase() === "true";

@@ -4,9 +4,14 @@ const status = document.getElementById('status');
 
 // Load saved API key from storage
 chrome.storage.sync.get(['geminiApiKey'], (result) => {
-  if (result.geminiApiKey) {
-    apiKeyInput.value = result.geminiApiKey;
+  const key = result.geminiApiKey;
+  // Only set if key matches typical API key pattern (alphanumeric, dash, underscore, 20-100 chars)
+  if (typeof key === 'string' && /^[A-Za-z0-9-_]{20,100}$/.test(key)) {
+    apiKeyInput.value = key;
     status.textContent = "API key loaded.";
+  } else {
+    apiKeyInput.value = '';
+    status.textContent = "No valid API key found.";
   }
 });
 
@@ -20,6 +25,11 @@ saveButton.addEventListener('click', () => {
 
   chrome.storage.sync.set({ geminiApiKey: apiKey }, () => {
     status.textContent = "API key saved successfully.";
+    apiKeyInput.value = '';
     console.log('API key saved:', apiKey);
   });
+});
+
+saveButton.addEventListener('click', () => {
+  apiKeyInput.value = '';
 });
