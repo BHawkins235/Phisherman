@@ -56,7 +56,7 @@ Phisherman/
     <li>Open an email in Gmail</li>
     <li>Open the extension popup</li>
     <li>Click <strong>Check Current Email</strong></li>
-    <li>Enter your API key in the Options page</li>
+    <li>Enter your API key in the Options page if needed</li>
   </ul>
 
   <h2 style="margin-top:30px;">Security Notes</h2>
